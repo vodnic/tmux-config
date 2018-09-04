@@ -118,20 +118,24 @@ if [ -f /local/apps/scripts/bash_shared ] ; then
 	. /local/apps/scripts/bash_shared
 fi
 
+### Przemeks
+
 alias tmux="TERM=screen-256color-bce tmux"
-export PATH=$PATH:/opt/scala/scala-2.11.8/bin/
-export SCALA_HOME=/opt/scala/scala-2.11.8/
 alias ?='cowsay -f $(ls /usr/share/cowsay/cows | shuf -n 1 | cut -d. -f1) $(whatis $(ls /bin) 2>/dev/null | shuf -n 1)'
+
 # disable ctr-s
 stty -ixon
+
 # change ctr-w (delete a word) behavior
 stty werase undef
 bind \\C-w:unix-filename-rubout
+
 # show list of possible options after one tab
 bind 'set show-all-if-ambiguous on'
-alias m3='cd /local/repos/mcom-m3'
-alias web='cd /local/repos/mcom-m3-web'
-alias common='cd /local/repos/mcom-common'
+
+# ignore case on tab completion
+bind 'set completion-ignore-case on'
+
 =() { calc $1 ; }
 
 wrapper(){
